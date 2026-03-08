@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="icons8-wikipedia-48.png" type="image/x-icon">
+  <title>Scotland - Wikipedia</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #202122;
+      line-height: 1.7;
+    }
+
+    a {
+      color: #0645ad;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #c8ccd1;
+      padding: 12px 20px;
+    }
+
+    .topbar h1 {
+      font-size: 24px;
+      color: #000;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1450px;
+      margin: 0 auto;
+      padding: 20px;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #ffffff;
+      border: 1px solid #c8ccd1;
+      padding: 15px;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+
+    .sidebar h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #c8ccd1;
+      padding-bottom: 6px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin: 8px 0;
+    }
+
+    .content {
+      flex: 1;
+      background-color: #ffffff;
+      border: 1px solid #c8ccd1;
+      padding: 20px;
+      min-width: 0;
+    }
+
+    .article-title {
+      font-size: 34px;
+      font-weight: normal;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 8px;
+    }
+
+    .article-subtitle {
+      margin-bottom: 20px;
+      color: #54595d;
+      font-size: 14px;
+    }
+
+    .content p {
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .content h2 {
+      margin-top: 28px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 5px;
+      font-size: 24px;
+      font-weight: normal;
+    }
+
+    .content h3 {
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .content ul {
+      margin: 10px 0 18px 24px;
+    }
+
+    .content li {
+      margin-bottom: 8px;
+    }
+
+    .infobox {
+      width: 290px;
+      background-color: #f8f9fa;
+      border: 1px solid #a2a9b1;
+      padding: 12px;
+      margin-left: 20px;
+      margin-bottom: 20px;
+      float: right;
+      font-size: 14px;
+    }
+
+    .infobox h3 {
+      text-align: center;
+      background-color: #cfe3ff;
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .infobox .flag-box {
+      width: 100%;
+      height: 140px;
+      border: 1px solid #c8ccd1;
+      margin-bottom: 10px;
+      background:
+        linear-gradient(to bottom right,
+          transparent 46%,
+          #ffffff 46%,
+          #ffffff 54%,
+          transparent 54%),
+        linear-gradient(to top right,
+          transparent 46%,
+          #ffffff 46%,
+          #ffffff 54%,
+          transparent 54%),
+        #005eb8;
+    }
+
+    .infobox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .infobox td {
+      padding: 6px 4px;
+      border-top: 1px solid #c8ccd1;
+      vertical-align: top;
+    }
+
+    .label {
+      font-weight: bold;
+      width: 42%;
+    }
+
+    .search-box {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 220px;
+      padding: 10px;
+      border: 1px solid #a2a9b1;
+      font-size: 14px;
+    }
+
+    .search-box button {
+      padding: 10px 16px;
+      background-color: #3366cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .search-box button:hover {
+      background-color: #254e9b;
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #54595d;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1000px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      .infobox {
+        float: none;
+        width: 100%;
+        margin: 0 0 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <h1>Wikipedia</h1>
+  </div>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#geography">Geography</a></li>
+        <li><a href="#government">Government and politics</a></li>
+        <li><a href="#economy">Economy</a></li>
+        <li><a href="#demographics">Demographics</a></li>
+        <li><a href="#culture">Culture</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#tourism">Tourism</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search within article..." />
+        <button onclick="searchArticle()">Search</button>
+        <button onclick="resetSearch()">Reset</button>
+      </div>
+
+      <h1 class="article-title">Scotland</h1>
+      <p class="article-subtitle">From a Wikipedia-style encyclopedia page</p>
+
+      <div class="infobox">
+        <h3>Scotland</h3>
+        <div class="flag-box" aria-label="Flag of Scotland"></div>
+        <table>
+          <tr>
+            <td class="label">Capital</td>
+            <td>Edinburgh</td>
+          </tr>
+          <tr>
+            <td class="label">Largest city</td>
+            <td>Glasgow</td>
+          </tr>
+          <tr>
+            <td class="label">Sovereign state</td>
+            <td>United Kingdom</td>
+          </tr>
+          <tr>
+            <td class="label">Official language</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td class="label">Recognised languages</td>
+            <td>Scots, Scottish Gaelic</td>
+          </tr>
+          <tr>
+            <td class="label">Legal system</td>
+            <td>Scots law</td>
+          </tr>
+          <tr>
+            <td class="label">Population</td>
+            <td>About 5.4 million</td>
+          </tr>
+          <tr>
+            <td class="label">Currency</td>
+            <td>Pound sterling (£)</td>
+          </tr>
+          <tr>
+            <td class="label">Major cities</td>
+            <td>Glasgow, Edinburgh, Aberdeen, Dundee, Inverness</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="articleText">
+        <section id="overview">
+          <p>
+            <strong>Scotland</strong> is a country that forms part of the
+            <a href="#">United Kingdom</a>. It occupies the northern third of the island of
+            <a href="#">Great Britain</a> and shares a land border with
+            <a href="#">England</a> to the south. To the west and north lies the Atlantic Ocean,
+            to the east the North Sea, and to the south-west the Irish Sea and North Channel.
+            The mainland is accompanied by a very large number of islands, many of which are grouped
+            into the <a href="#">Hebrides</a>, <a href="#">Orkney</a>, and <a href="#">Shetland</a>.
+            This combination of mainland and islands gives Scotland one of the most distinctive
+            geographical identities in Europe.
+          </p>
+
+          <p>
+            The capital city is <a href="#">Edinburgh</a>, which is known for its role in government,
+            higher education, law, publishing, and finance. The largest city is
+            <a href="#">Glasgow</a>, historically associated with trade, shipbuilding, engineering,
+            music, and urban industry. Other notable urban centres include Aberdeen, Dundee,
+            Inverness, Perth, and Stirling. Despite being part of the United Kingdom, Scotland has
+            long maintained several institutions of its own, including a separate legal system,
+            educational tradition, and national church structure.
+          </p>
+
+          <p>
+            Scotland has a strong and widely recognised national identity. It is associated with
+            cultural symbols such as the Saltire, tartan, kilts, bagpipes, whisky, castles, and
+            the Highlands. It is also known for its literary heritage, intellectual life, scientific
+            contributions, and historical role in the development of the modern world. Thinkers,
+            inventors, physicians, philosophers, and engineers from Scotland have had influence far
+            beyond the country’s borders.
+          </p>
+
+          <p>
+            The landscape of Scotland is one of the country’s defining features. Mountain ranges,
+            lochs, glens, rivers, forests, coastline, and islands all shape the national image.
+            The contrast between the Highlands and the Central Lowlands has affected settlement,
+            economy, transport, and culture for centuries. Many people around the world associate
+            Scotland with dramatic scenery, historical monuments, and a sense of deep continuity
+            between past and present.
+          </p>
+
+          <p>
+            Scotland also has an important place in British and European history. It existed as an
+            independent kingdom for many centuries before entering political union with England in
+            the early eighteenth century. Even after union, Scottish institutions remained distinct
+            in several important areas. In the modern era, devolution has restored a national
+            parliament and government in Edinburgh, strengthening the country’s political profile
+            within the United Kingdom.
+          </p>
+
+          <p>
+            In contemporary terms, Scotland is a modern developed society with strengths in finance,
+            higher education, life sciences, renewable energy, culture, and tourism. It is at once
+            ancient and modern: a place of prehistoric monuments and digital industries, medieval
+            castles and world-class universities, rural landscapes and major cities. This mixture of
+            history, geography, politics, and culture helps explain why Scotland occupies such a
+            distinctive place within both the United Kingdom and the wider world.
+          </p>
+        </section>
+
+        <section id="history">
+          <h2>History</h2>
+          <p>
+            Human occupation of what is now Scotland goes back many thousands of years. Archaeological
+            evidence shows that prehistoric peoples lived, farmed, built monuments, and established
+            settlements across different parts of the country. Remains such as stone circles,
+            burial cairns, fortified sites, and early villages suggest that Scotland has long been
+            home to organised communities with sophisticated practical and cultural traditions.
+            Some of the earliest evidence of settlement is found in island and coastal regions, where
+            traces of Neolithic life remain particularly well preserved.
+          </p>
+
+          <p>
+            During the early historical period, the land was inhabited by several different groups,
+            including the <a href="#">Picts</a>, the <a href="#">Gaels</a>, Britons, and Angles.
+            These peoples differed in language, political organisation, and culture, yet over time
+            their interactions through migration, alliance, conflict, and religion gradually shaped
+            the foundations of medieval Scotland. The spread of Christianity also played a major role
+            in cultural development, linking local communities to wider European religious networks and
+            helping to preserve learning, literacy, and record-keeping.
+          </p>
+
+          <p>
+            By the early Middle Ages, a political entity known as the <a href="#">Kingdom of Alba</a>
+            had emerged. This kingdom developed over time into the Kingdom of Scotland. Medieval
+            Scotland was marked by dynastic change, warfare, feudal relationships, church influence,
+            and the gradual extension of royal authority. Kings attempted to strengthen control over
+            different regions, though geography and regional power often made centralised government
+            difficult. Castles, monasteries, burghs, and trading centres all became more important
+            in this period.
+          </p>
+
+          <p>
+            One of the most significant parts of Scottish history is the struggle against English
+            attempts to dominate the country in the late thirteenth and early fourteenth centuries.
+            The <a href="#">Wars of Scottish Independence</a> became central to Scottish historical
+            memory. Figures such as <a href="#">William Wallace</a> and
+            <a href="#">Robert the Bruce</a> came to symbolise resistance, kingship, and national
+            survival. The victory at Bannockburn and the eventual assertion of Scottish independence
+            reinforced the kingdom’s place as a separate political community.
+          </p>
+
+          <p>
+            Later centuries saw further political, religious, and social change. The Renaissance and
+            Reformation affected Scotland deeply. The Reformation in particular transformed church
+            structures, public life, education, and political identity. Religious conflict and debate
+            shaped much of sixteenth- and seventeenth-century Scotland, as did relations between crown,
+            church, and nobility. In 1603, a major constitutional shift took place when James VI of
+            Scotland inherited the English throne as James I of England, uniting the crowns though not
+            yet the parliaments.
+          </p>
+
+          <p>
+            Scotland remained a separate kingdom until the <a href="#">Acts of Union 1707</a>,
+            which joined the Scottish and English Parliaments and created the Kingdom of Great Britain.
+            The union was controversial and remains one of the most debated turning points in Scottish
+            history. Even after 1707, Scotland retained distinct institutions in law, education, and
+            religion, which helped preserve a strong separate identity. During the eighteenth century,
+            the country also became associated with the <a href="#">Scottish Enlightenment</a>,
+            a period of major intellectual and scientific achievement.
+          </p>
+
+          <p>
+            The eighteenth and nineteenth centuries also brought social upheaval. Economic change,
+            agricultural improvement, migration, and the reorganisation of landholding transformed much
+            of the Highlands. Industrialisation reshaped the Central Belt, especially in and around
+            Glasgow, where shipbuilding, engineering, coal, iron, and manufacturing expanded rapidly.
+            Urban growth brought both prosperity and hardship, with crowded living conditions and class
+            divisions affecting many industrial communities.
+          </p>
+
+          <p>
+            In the twentieth century, Scotland experienced war, industrial decline, cultural renewal,
+            and constitutional change. Traditional heavy industries weakened in many areas, but new
+            sectors emerged. Political debate increasingly focused on national governance and the degree
+            of autonomy Scotland should possess within the United Kingdom. This process eventually led
+            to devolution, and in 1999 the <a href="#">Scottish Parliament</a> was reopened in
+            Edinburgh. Since then, questions of identity, power, and the constitutional future of
+            Scotland have remained central to public life.
+          </p>
+        </section>
+
+        <section id="geography">
+          <h2>Geography</h2>
+          <p>
+            Scotland’s geography is exceptionally varied and has strongly influenced the country’s
+            history, settlement, economy, and cultural development. It is often divided into three
+            broad physical regions: the <a href="#">Highlands and Islands</a>, the
+            <a href="#">Central Lowlands</a>, and the <a href="#">Southern Uplands</a>. Each of these
+            regions has its own landscape character, population pattern, and historical significance.
+          </p>
+
+          <p>
+            The Highlands occupy a large northern and western portion of the country and are famous for
+            mountains, glens, sea lochs, and rugged scenery. This region has long been associated with
+            low population density, strong local identities, and a landscape that can be both beautiful
+            and challenging. The Highlands include some of Scotland’s most iconic scenery and remain a
+            major source of tourism, folklore, and national imagery.
+          </p>
+
+          <p>
+            The Central Lowlands form the most densely populated part of Scotland and contain the main
+            cities, many industrial areas, and much of the nation’s transport infrastructure. Glasgow
+            and Edinburgh both lie within this wider zone, as do many towns that developed through
+            trade, manufacturing, and mining. The Lowlands have historically been the economic and
+            administrative heart of the country, though they differ greatly from the Highlands in relief
+            and settlement.
+          </p>
+
+          <p>
+            To the south, the Southern Uplands are characterised by rolling hills, valleys, and rural
+            landscapes. Although less heavily populated than the Central Lowlands, the region has long
+            been important for agriculture, border history, and transport routes linking Scotland with
+            northern England. The geographical variety of Scotland as a whole helps explain why regional
+            difference has always been such an important theme in Scottish life.
+          </p>
+
+          <p>
+            Scotland is also notable for its very long and highly irregular coastline. Sea lochs,
+            inlets, headlands, estuaries, and islands create a complex coastal environment. The country
+            includes more than 790 islands, though only a minority are inhabited. Island groups such as
+            the Inner and Outer Hebrides, Orkney, and Shetland possess distinct local cultures,
+            historical traditions, and economic patterns. For many communities, the sea has been as
+            important as the land in shaping everyday life.
+          </p>
+
+          <p>
+            Among Scotland’s best-known natural features are <a href="#">Ben Nevis</a>, the highest
+            mountain in the British Isles, and famous lochs such as <a href="#">Loch Ness</a> and
+            <a href="#">Loch Lomond</a>. Rivers including the Tay, Clyde, Spey, and Forth have also
+            played major roles in transport, settlement, fishing, and trade. Natural beauty is one of
+            the most important elements of Scotland’s international reputation.
+          </p>
+
+          <p>
+            The climate of Scotland is generally temperate and oceanic, but it varies considerably
+            according to region, altitude, and exposure to Atlantic weather systems. Western areas are
+            often wetter and milder, while eastern parts may be relatively drier and sunnier. Upland
+            regions experience colder conditions, with snow more common in winter. These climatic
+            differences affect farming, transport, housing, and patterns of vegetation.
+          </p>
+
+          <p>
+            Scotland’s environment includes forests, moorlands, peatlands, freshwater systems, marine
+            habitats, and mountainous ecosystems. It supports a range of wildlife, including red deer,
+            golden eagles, seals, seabirds, and many other species. Large areas are protected through
+            national parks, nature reserves, and conservation designations. Environmental protection,
+            land management, and renewable energy development are now important parts of public policy
+            and economic planning.
+          </p>
+        </section>
+
+        <section id="government">
+          <h2>Government and politics</h2>
+          <p>
+            Scotland forms part of the constitutional structure of the United Kingdom, but it possesses
+            its own devolved political institutions. The <a href="#">Scottish Parliament</a>, located
+            in Edinburgh, was established in 1999 following a referendum process that endorsed
+            devolution. It has authority over a range of domestic matters, including health,
+            education, justice, transport, local government, housing, agriculture, and aspects of
+            taxation and social policy.
+          </p>
+
+          <p>
+            The executive branch in devolved matters is the <a href="#">Scottish Government</a>,
+            headed by the First Minister and supported by cabinet secretaries and ministers. This
+            government is responsible for developing and implementing policy in areas under devolved
+            control. The existence of devolved institutions means that Scotland has significant
+            decision-making power in internal affairs, even though sovereignty in the wider
+            constitutional sense remains vested in the Parliament of the United Kingdom.
+          </p>
+
+          <p>
+            Some powers remain reserved to Westminster. These generally include defence, foreign
+            affairs, immigration, nationality, much of macroeconomic policy, and other matters viewed
+            as relating to the state as a whole. The division between reserved and devolved powers is
+            central to understanding Scottish politics. Many public debates concern how powers should be
+            distributed and whether the present settlement should be maintained, expanded, or replaced.
+          </p>
+
+          <p>
+            Political life in Scotland includes several major parties and a wide range of public
+            opinion. Questions of devolution, union, independence, public services, social justice,
+            energy, and economic development all play important roles in elections and policy debates.
+            Scotland has often shown distinctive voting patterns compared with other parts of the
+            United Kingdom, which has reinforced the sense of a separate political sphere.
+          </p>
+
+          <p>
+            Local government is organised through council areas, which provide many local services such
+            as education administration, waste collection, planning, roads, libraries, and aspects of
+            social care. These councils are important in everyday governance, even though national-level
+            political debate tends to receive more attention. Taken together, local councils, the
+            Scottish Parliament, and the UK Parliament form a layered system of representation and
+            administration.
+          </p>
+
+          <p>
+            Constitutional questions remain central to modern Scottish politics. Debates over the future
+            of the union, the degree of Scottish self-government, and the meaning of national
+            sovereignty continue to shape party competition and public discussion. As a result,
+            Scotland’s political landscape is not only about policy outcomes but also about identity,
+            history, and the form of government most appropriate for the country’s future.
+          </p>
+        </section>
+
+        <section id="economy">
+          <h2>Economy</h2>
+          <p>
+            Scotland has a diverse mixed economy shaped by both historical industries and modern
+            service sectors. Over time, the economy has moved from agriculture and heavy industry
+            toward finance, technology, higher education, energy, tourism, and specialised
+            manufacturing. This transformation reflects wider shifts in the global economy, but it also
+            highlights Scotland’s ability to adapt to changing conditions.
+          </p>
+
+          <p>
+            During the Industrial Revolution and the nineteenth century, Scotland became one of the
+            most important industrial regions in Britain. Shipbuilding on the Clyde, coal mining, steel
+            production, engineering, textiles, and heavy manufacturing were central to the economic life
+            of many towns and cities. Glasgow in particular gained international prominence as a centre
+            of industry and trade. Industrialisation brought wealth and urban expansion, but it also
+            produced overcrowding, class inequality, and economic dependence on a limited number of
+            sectors.
+          </p>
+
+          <p>
+            In the twentieth century, many traditional industries declined, especially after the Second
+            World War. This caused unemployment and social difficulty in numerous communities that had
+            relied heavily on shipyards, mines, and factories. At the same time, new industries and
+            services developed, gradually reshaping the economy. Public policy, infrastructure
+            investment, education, and private innovation all contributed to this transition.
+          </p>
+
+          <p>
+            Today, Edinburgh is an important financial centre, known for banking, insurance, asset
+            management, and professional services. Glasgow remains a major economic hub with strengths
+            in higher education, culture, engineering, digital business, and commerce. Aberdeen has
+            been closely associated with the oil and gas industry, while Dundee has developed a growing
+            reputation in technology, gaming, design, and life sciences.
+          </p>
+
+          <p>
+            Energy has long been a strategically important part of the Scottish economy. Offshore oil
+            and gas from the North Sea played a major role in the later twentieth century and continue
+            to matter economically and politically. At the same time, Scotland has increasingly focused
+            on renewable energy, including wind, hydroelectric power, tidal technology, and other
+            sustainable energy forms. This shift reflects both environmental priorities and the
+            country’s natural resources.
+          </p>
+
+          <p>
+            Scotland is also known for its food and drink industries. Whisky is one of the country’s
+            most internationally recognised products and a major export. Fisheries, salmon farming,
+            agriculture, and high-quality food production are important in many rural and coastal
+            regions. The creative industries, tourism, higher education, and cultural sectors also
+            contribute significantly to employment and international profile.
+          </p>
+
+          <p>
+            Economic life in Scotland is shaped by regional difference. Urban centres often dominate
+            finance, services, and innovation, while rural areas may depend more on farming, tourism,
+            public services, energy, and small-scale enterprise. Transport, housing, population
+            movement, and regional inequality remain important policy concerns. The economy therefore
+            combines global connectivity with strong local variation.
+          </p>
+        </section>
+
+        <section id="demographics">
+          <h2>Demographics</h2>
+          <p>
+            Scotland has a population of a little over five million people, though settlement is
+            unevenly distributed. Most residents live in the Central Belt, particularly in and around
+            Glasgow and Edinburgh, while large areas of the Highlands and Islands remain relatively
+            sparsely populated. This uneven pattern reflects geography, industrial history, transport
+            links, and changing economic opportunities.
+          </p>
+
+          <p>
+            Glasgow is the largest city, while Edinburgh serves as the capital and a major centre of
+            administration, law, education, tourism, and finance. Aberdeen, Dundee, Inverness,
+            Stirling, Perth, and several other towns and cities also play important regional roles.
+            Urban Scotland contains a wide range of communities, industries, and educational
+            institutions, while rural and island Scotland often has different social and economic
+            needs, including issues related to ageing populations, transport, housing, and access to
+            services.
+          </p>
+
+          <p>
+            The main language of public and everyday life is English. However, Scotland also has two
+            important historic languages: <a href="#">Scots</a> and
+            <a href="#">Scottish Gaelic</a>. Scots exists in several regional forms and has a long
+            presence in speech, literature, and cultural expression. Gaelic is historically associated
+            especially with the Highlands and Islands, though it is also preserved and promoted through
+            schools, media, arts, and public policy in other parts of the country.
+          </p>
+
+          <p>
+            The demographic character of Scotland has been shaped by migration for centuries. Movement
+            between Scotland and other parts of Britain, Ireland, Europe, and the wider world has
+            influenced population growth, labour markets, religion, culture, and urban life. Scottish
+            emigration was historically significant, especially during periods of economic change and
+            rural disruption, while immigration has contributed to the diversity of modern Scotland.
+          </p>
+
+          <p>
+            Religious life has also played an important role in Scottish society, though contemporary
+            Scotland is more secular than in earlier centuries. Historic links with Presbyterianism,
+            Roman Catholicism, Episcopalianism, and other Christian traditions remain significant in
+            understanding the country’s past and social structure. At the same time, modern Scotland
+            contains people of many different beliefs and backgrounds, reflecting both historical
+            development and recent global migration.
+          </p>
+
+          <p>
+            Socially and culturally, Scotland today is a complex and diverse society. It combines deep
+            historical traditions with modern multicultural urban life, and it continues to negotiate
+            questions of identity, language, belonging, and representation in a changing world.
+          </p>
+        </section>
+
+        <section id="culture">
+          <h2>Culture</h2>
+          <p>
+            Scottish culture is one of the best-known aspects of the country’s identity. It includes
+            traditions, symbols, arts, literature, language, music, food, and public celebrations that
+            have developed over many centuries. While often represented through iconic images such as
+            tartan, kilts, castles, and bagpipes, Scottish culture is much broader and more varied than
+            these symbols alone suggest.
+          </p>
+
+          <p>
+            Traditional cultural expressions include Highland dress, clan associations, folk music,
+            dance, piping, storytelling, and regional customs. Events such as the Highland Games, Burns
+            Night, and <a href="#">Hogmanay</a> remain widely recognised and continue to be celebrated
+            both within Scotland and by Scottish communities abroad. These traditions have helped shape
+            popular understandings of Scottishness, although they often interact with more modern and
+            urban forms of culture.
+          </p>
+
+          <p>
+            Literature occupies a particularly important place in the national heritage. Scotland has
+            produced writers of major international influence, including <a href="#">Robert Burns</a>,
+            <a href="#">Sir Walter Scott</a>, <a href="#">Robert Louis Stevenson</a>, Hugh MacDiarmid,
+            Muriel Spark, and many others. Scottish writing has developed in English, Scots, and Gaelic,
+            reflecting the country’s linguistic diversity. Themes of landscape, memory, identity,
+            justice, and social change frequently appear in its literary tradition.
+          </p>
+
+          <p>
+            Music is another vital part of Scottish cultural life. Traditional forms include bagpipe
+            music, fiddle music, folk song, and Gaelic psalm singing, while modern Scotland has also
+            contributed strongly to rock, pop, classical music, and contemporary performance. Festivals,
+            concerts, local traditions, and national events all help sustain a lively musical culture
+            across different regions and generations.
+          </p>
+
+          <p>
+            Scotland is also noted for theatre, visual art, film, design, and architecture. Edinburgh’s
+            major festivals are internationally known and attract performers, writers, and visitors from
+            around the world. Museums, galleries, historic buildings, and public events all contribute
+            to cultural life. The arts in Scotland often combine local tradition with outward-looking
+            creativity, making culture one of the country’s most visible strengths.
+          </p>
+
+          <p>
+            Food and drink form another important part of Scottish identity. Items such as haggis,
+            shortbread, oatcakes, smoked salmon, tablet, and Scotch whisky are widely associated with
+            the country. At the same time, modern Scottish cuisine includes a broad mix of local
+            produce, international influence, and regional specialities. Food culture is often tied to
+            agriculture, fishing, hospitality, and tourism.
+          </p>
+
+          <p>
+            Sport also plays a significant role in cultural life. Football is the most widely followed
+            team sport, while rugby union, golf, curling, athletics, and shinty all have important
+            places in Scottish society. Golf in particular has a strong association with Scotland,
+            which is often regarded as its historic home. Sporting events help express community pride,
+            regional loyalty, and national identity.
+          </p>
+        </section>
+
+        <section id="education">
+          <h2>Education</h2>
+          <p>
+            Education has long been central to Scotland’s national identity and historical development.
+            The country has a distinct education system, separate from that of England, and a strong
+            tradition of valuing learning, literacy, and scholarship. This reputation has roots in both
+            religious history and Enlightenment thought, and it continues to influence public life and
+            political priorities today.
+          </p>
+
+          <p>
+            Scotland’s schools, colleges, and universities have played a major role in shaping the
+            country’s cultural and intellectual standing. The school system has its own structures and
+            qualifications, and educational policy is one of the important responsibilities of devolved
+            government. Debates over access, quality, curriculum, equity, and funding therefore occupy
+            a visible place in Scottish public policy.
+          </p>
+
+          <p>
+            The universities of St Andrews, Glasgow, Aberdeen, and Edinburgh are among the oldest in
+            the English-speaking world. These institutions, together with later universities and
+            specialist colleges, have made major contributions to science, medicine, law, philosophy,
+            theology, literature, and social thought. Scotland’s universities have historically drawn
+            students from both within and beyond the country, reinforcing Scotland’s international
+            intellectual connections.
+          </p>
+
+          <p>
+            During the <a href="#">Scottish Enlightenment</a>, education and university life became
+            especially important. Scholars and thinkers associated with Scottish institutions made major
+            advances in philosophy, economics, engineering, medicine, and the social sciences. The
+            influence of this period extended far beyond Scotland and helped shape wider European and
+            Atlantic intellectual history.
+          </p>
+
+          <p>
+            In the modern period, education remains closely linked to national development. Universities
+            and colleges contribute to research, innovation, teacher training, health sciences, business
+            development, and cultural life. Schools and further education institutions also play a vital
+            role in social mobility, regional development, and workforce preparation. Education is
+            therefore not only a cultural value in Scotland but also a practical foundation for the
+            country’s future.
+          </p>
+        </section>
+
+        <section id="tourism">
+          <h2>Tourism</h2>
+          <p>
+            Tourism is a major part of Scotland’s economy and international image. Visitors are drawn
+            by the country’s landscapes, castles, historic towns, museums, literary heritage, festivals,
+            and outdoor opportunities. Scotland’s reputation abroad is strongly connected to scenery and
+            history, and tourism brings economic benefit to both cities and rural communities.
+          </p>
+
+          <p>
+            Edinburgh is one of the country’s most visited destinations, known for its historic centre,
+            castle, museums, festivals, and role as the capital. Glasgow attracts visitors for its
+            architecture, music, galleries, shopping, and cultural life. Other cities such as Aberdeen,
+            Dundee, Inverness, Perth, and Stirling also contribute to national tourism through heritage,
+            waterfront development, events, and access to nearby natural attractions.
+          </p>
+
+          <p>
+            Rural tourism is especially important in the Highlands and Islands. Places such as the Isle
+            of Skye, Glencoe, Loch Ness, the Cairngorms, and the North Coast are widely admired for
+            scenery, walking routes, wildlife, and historical atmosphere. Island tourism is also
+            significant, with visitors drawn to local traditions, archaeological sites, dramatic
+            coastlines, and distinctive community life.
+          </p>
+
+          <p>
+            Historic monuments and heritage sites are central to the visitor experience. Castles,
+            abbeys, battlefields, old town centres, prehistoric monuments, and stately homes all help
+            tell the story of Scotland across many centuries. Cultural tourism is equally important,
+            including music events, whisky tourism, literary festivals, museums, and food experiences.
+          </p>
+
+          <p>
+            Tourism supports employment in accommodation, food service, transport, heritage management,
+            guiding, arts, retail, and recreation. In some remote areas it is one of the most important
+            sectors of the local economy. At the same time, tourism policy must balance economic
+            benefits with environmental sustainability, infrastructure pressure, and the preservation of
+            local communities and landscapes.
+          </p>
+
+          <ul>
+            <li>Edinburgh Castle</li>
+            <li>Loch Ness</li>
+            <li>Isle of Skye</li>
+            <li>Glencoe</li>
+            <li>Stirling Castle</li>
+            <li>Cairngorms National Park</li>
+            <li>Loch Lomond and The Trossachs</li>
+            <li>Orkney and Shetland heritage sites</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="footer">
+    <p>This is a student-made Wikipedia-style replica page about Scotland.</p>
+  </div>
+
+  <script>
+    function searchArticle() {
+      const input = document.getElementById("searchInput").value.trim();
+      const article = document.getElementById("articleText");
+
+      resetHighlights(article);
+
+      if (input === "") {
+        alert("Please enter a word to search.");
+        return;
+      }
+
+      const regex = new RegExp("(" + escapeRegExp(input) + ")", "gi");
+      article.innerHTML = article.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    function resetSearch() {
+      const article = document.getElementById("articleText");
+      document.getElementById("searchInput").value = "";
+      resetHighlights(article);
+    }
+
+    function resetHighlights(article) {
+      article.innerHTML = article.innerHTML.replace(/<span class="highlight">|<\/span>/g, "");
+    }
+
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+  </script>
+
+</body>
+</html>
